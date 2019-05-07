@@ -254,6 +254,10 @@ export class Connection {
           break;
         }
 
+        case Actions.AfgFinalized {
+          message.payload
+        }
+
         default: {
           break;
         }
