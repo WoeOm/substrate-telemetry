@@ -39,7 +39,7 @@ export declare type Authority = {
 };
 export declare type Authorities = Array<Address>;
 export declare type AuthoritySetId = Opaque<number, 'AuthoritySetId'>;
-export declare type ConsensusInfo = Map<BlockNumber, ConsensusView>;
+export declare type ConsensusInfo = Array<[BlockNumber, ConsensusView]>;
 export declare type ConsensusView = Map<NodeId, ConsensusState>;
 export declare type ConsensusState = Map<Address, ConsensusDetail>;
 export declare type ConsensusDetail = {
@@ -60,3 +60,4 @@ export declare type ImplicitPrecommit = Opaque<boolean, 'ImplicitPrecommit'>;
 export declare type ImplicitPrevote = Opaque<boolean, 'ImplicitPrevote'>;
 export declare type ImplicitFinalized = Opaque<boolean, 'ImplicitFinalized'>;
 export declare type ImplicitPointer = Opaque<BlockNumber, 'ImplicitPointer'>;
+

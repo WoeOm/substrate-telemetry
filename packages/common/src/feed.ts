@@ -42,6 +42,7 @@ export const Actions = {
   Pong             : 0x0F as 0x0F,
   ConsensusInfo    : 0x10 as 0x10,
   AuthoritySet     : 0x11 as 0x11,
+  AfgFinalized     : 0x12 as 0x12,
 };
 
 export type Action = typeof Actions[keyof typeof Actions];
@@ -141,6 +142,11 @@ export namespace Variants {
     action: typeof Actions.Pong;
     payload: string; // just echo whatever `ping` sent
   }
+
+  export interface AfgFinalizedMessage extends MessageBase {
+    action: typeof Actions.AfgFinalized;
+    payload: [...]
+  }
 }
 
 export type Message =
@@ -161,7 +167,8 @@ export type Message =
   | Variants.RemovedChainMessage
   | Variants.SubscribedToMessage
   | Variants.UnsubscribedFromMessage
-  | Variants.PongMessage;
+  | Variants.PongMessage
+  | Variants.AfgFinalizedMessage;
 
 /**
  * Data type to be sent to the feed. Passing through strings means we can only serialize once,

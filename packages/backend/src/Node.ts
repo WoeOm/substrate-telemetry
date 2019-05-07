@@ -72,7 +72,7 @@ export default class Node {
   private throttle = false;
 
   // how this node views itself and others
-  public consensusCache: ConsensusView = {} as ConsensusView;
+  public consensusCache: ConsensusView = [];
 
   private authorities: Types.Authorities = [] as Types.Authorities;
   private authoritySetId: Types.AuthoritySetId = 0 as Types.AuthoritySetId;

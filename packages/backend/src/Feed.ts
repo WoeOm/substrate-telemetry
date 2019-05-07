@@ -19,6 +19,7 @@ export default class Feed {
   private socket: WebSocket;
   private messages: Array<FeedMessage.Message> = [];
   private waitingForPong = false;
+  private sendFinality = false;
 
   constructor(socket: WebSocket) {
     this.id = nextId();
@@ -170,6 +171,14 @@ export default class Feed {
     }
   }
 
+  public sendFinalityMessage(message: FeedMessage.Message) {
+    if (!this.sendFinality) {
+      return;
+    }
+
+    this.sendMessage(message);
+  }
+
   public ping() {
     if (this.waitingForPong) {
       this.disconnect();
@@ -201,6 +210,10 @@ export default class Feed {
         }
 
         this.events.emit('subscribe', payload as Types.ChainLabel);
+        break;
+
+      case 'sendFinality':
+        this.sendFinality = payload === 'true';
         break;
 
       case 'ping':
